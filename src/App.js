@@ -1,23 +1,32 @@
-import logo from './logo.svg';
+import React, { useState } from "react";
 import './App.css';
+import Form from "./Components/Form";
+import Header from "./Components/Header";
+import Card from "./Components/Card";
 
-function App() {
+
+const App = () => {
+  const [inputs, setInputs] = useState({
+    inputTodo: "",
+  });
+  const [listTodo, setListTodo] = useState([]);
+  // console.log('ini input', inputs);
+  // console.log('ini list', listTodo);
+  // console.log(listTodo);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header title="TodoList Ku" />
+      <Form
+        inputs={inputs}
+        setInputs={setInputs}
+        listTodo={listTodo}
+        setListTodo={setListTodo}
+      />
+      <Card
+        listTodo={listTodo}
+        setListTodo={setListTodo}
+      />
+
     </div>
   );
 }
